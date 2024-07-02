@@ -12,14 +12,13 @@ function App() {
     try {
       if (!inputRef.current.value) location.reload()
       else {
-        console.log(inputRef.current.value)
         const response = await axios.post(import.meta.env.VITE_API_TODOS, {
           "title": inputRef.current.value
         })
         location.reload()
       }
     } catch (error) {
-      console.log(error)
+      location.reload()
     }
   }
 
@@ -29,7 +28,6 @@ function App() {
   const getTodos = async () => {
     try {
       const { data } = await axios.get(import.meta.env.VITE_API_TODOS)
-      console.log(data)
       let notDoneTodos = []
       data.map((todo) => {
         if (todo.isDone && todo.isDone == true) {
@@ -42,7 +40,7 @@ function App() {
       setTodos(notDoneTodos)
       todos.reverse()
     } catch (error) {
-      console.log(error)
+      location.reload()
     }
   }
 

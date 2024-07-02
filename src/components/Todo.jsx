@@ -6,11 +6,9 @@ const Todo = ({title, id, isDone}) => {
 	const removeATodo = async () => {
 		try {
 			const response = await axios.delete(`${import.meta.env.VITE_API_TODOS}/${id}`)
-			console.log(id)
 			location.reload()
 		} catch (error) {
-			console.log(error)
-			console.log(id)
+			location.reload()
 		}
 	}
 
@@ -30,7 +28,7 @@ const Todo = ({title, id, isDone}) => {
 			// 	location.reload()
 			// }
 		} catch (error) {
-			console.log(error)
+			location.reload()
 		}
 	}
 
